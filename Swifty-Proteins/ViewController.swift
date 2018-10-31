@@ -12,11 +12,27 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.testGetData()
+        }
         // Dispose of any resources that can be recreated.
+    }
+    
+    func testGetData() {
+        if let url = URL(string: "https://www.hackingwithswift.com") {
+            do {
+                let contents = try String(contentsOf: url)
+                print(contents)
+            } catch {
+                // contents could not be loaded
+            }
+        } else {
+            // the URL was bad!
+        }
     }
 }
