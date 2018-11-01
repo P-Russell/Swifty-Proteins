@@ -9,9 +9,12 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let pdbApi : ProteinDataBankAPI = ProteinDataBankAPI()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        pdbApi.get(ligand : "0RU")
     }
 
     override func didReceiveMemoryWarning() {
