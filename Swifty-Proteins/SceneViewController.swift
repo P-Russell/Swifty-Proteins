@@ -29,7 +29,11 @@ class SceneViewController: UIViewController {
         initView()
         initCamera()
         initScene()
-        createTarget()
+        if let lig = ligand {
+            for a in lig.atoms {
+                addAtom(atom: a)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,6 +63,20 @@ class SceneViewController: UIViewController {
         let geometryNode = SCNNode(geometry: geometry)
         gameScene.rootNode.addChildNode(geometryNode)
     }
+    
+    func addAtom (atom : Atom) {
+        let geometry : SCNGeometry = SCNSphere(radius: 0.5)
+        geometry.materials.first?.diffuse.contents = UIColor.red
+        
+        let geometryNode = SCNNode(geometry: geometry)
+        geometryNode.position = SCNVector3(x : atom.x, y : atom.y, z : atom.z)
+        gameScene.rootNode.addChildNode(geometryNode)
+    }
+    
+    func addConnetion (connect : Connect) {
+        
+    }
+    
 }
 
 
