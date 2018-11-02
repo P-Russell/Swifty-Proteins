@@ -11,7 +11,7 @@ import Alamofire
 
 class ProteinDataBankAPI {
     
-    var ligand : Ligand = Ligand()
+    var ligand : Ligand?
     
     private func splitOnNewLine(str : String) -> [String] {
         var lines: [String] = []
@@ -26,38 +26,50 @@ class ProteinDataBankAPI {
     }
     
     private func newAtom(line : [Substring]) -> Atom {
-        if line.count ==  11 {
-            
+        if let index = Int(line[1]),
+        let x = Float(line[6]),
+        let y = Float(line[7]),
+        let z = Float(line[8]) {
+            let symbol = String(line[11])
+            return Atom(index: index, symbol: symbol, x: x, y: y, z: z)
         }
+        return Atom()
     }
     
-    private func newConnect(line : [Substring]) -> Connect {
-        
-    }
+//    private func newConnect(line : [Substring]) -> Connect {
+//
+//    }
     
-    private func process(ligandData : String){
+    private func process(ligandData : String) -> Ligand {
+        let localLigand : Ligand = Ligand()
         let lines = splitOnNewLine(str: ligandData)
         for line in lines {
             var token = line.split(separator: " ")
             switch token[0] {
             case "ATOM":
-                ligand.atoms.append(newAtom(line: token))
+                if line.count == 12 { localLigand.atoms.append(newAtom(line: token)) }
+                break
             case "CONECT":
-                ligand.connections.append(newConnect(line: token))
+                break
+//                ligand.connections.append(newConnect(line: token))
             case "END":
-                return
+                break
             default:
                 continue
             }
         }
+        return localLigand
     }
     
-    func get(ligand : String) -> Ligand? {
-        guard let url = URL(string: "https://files.rcsb.org/ligands/view/\(ligand)_ideal.pdb") else { return nil }
+    func fetch(ligand : String) {
+        guard let url = URL(string: "https://files.rcsb.org/ligands/view/\(ligand)_ideal.pdb") else { return }
         Alamofire.request(url, method : .get).validate().responseString(queue: DispatchQueue.main, encoding: String.Encoding.ascii) { response in
             switch response.result {
             case .success:
-                self.process(ligandData: response.result.value!)
+                self.ligand = self.process(ligandData: response.result.value!)
+                for e in self.ligand!.atoms {
+                    print ("ATOM index: \(e.index) x: \(e.x) y: \(e.y) z: \(e.z) sym: \(e.symbol)")
+                }
 //                if let ligand = self.process(ligandData: response.result.value!) { return ligand }
 //                else { return nil }
             case .failure(let error):

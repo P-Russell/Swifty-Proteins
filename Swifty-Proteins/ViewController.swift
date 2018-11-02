@@ -14,7 +14,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        pdbApi.get(ligand : "0RU")
+        pdbApi.fetch(ligand : "0RU")
     }
 
     override func didReceiveMemoryWarning() {
