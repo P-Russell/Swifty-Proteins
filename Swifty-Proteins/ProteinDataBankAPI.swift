@@ -36,9 +36,15 @@ class ProteinDataBankAPI {
         return Atom()
     }
     
-//    private func newConnect(line : [Substring]) -> Connect {
-//
-//    }
+    private func newConnect(line : [Substring]) -> Connect {
+        var i = 1
+        var connections : [Int] = [Int]()
+        while i < line.count {
+            if let node = Int(line[i]) { connections.append(node) }
+            i += 1
+        }
+        return Connect(connects: connections)
+    }
     
     private func process(ligandData : String) -> Ligand {
         let localLigand : Ligand = Ligand()
@@ -47,13 +53,12 @@ class ProteinDataBankAPI {
             var token = line.split(separator: " ")
             switch token[0] {
             case "ATOM":
-                if line.count == 12 { localLigand.atoms.append(newAtom(line: token)) }
+                if token.count == 12 { localLigand.atoms.append(newAtom(line: token)) }
                 break
             case "CONECT":
-                break
-//                ligand.connections.append(newConnect(line: token))
+                if token.count > 0 { localLigand.connections.append(newConnect(line: token))}
             case "END":
-                break
+                return localLigand
             default:
                 continue
             }
@@ -70,8 +75,11 @@ class ProteinDataBankAPI {
                 for e in self.ligand!.atoms {
                     print ("ATOM index: \(e.index) x: \(e.x) y: \(e.y) z: \(e.z) sym: \(e.symbol)")
                 }
-//                if let ligand = self.process(ligandData: response.result.value!) { return ligand }
-//                else { return nil }
+                for e in self.ligand!.connections {
+                    print ("CONECT : ", terminator: "")
+                    for node in e.connects { print (node, terminator: " ") }
+                    print()
+                }
             case .failure(let error):
                 print(error)
             }

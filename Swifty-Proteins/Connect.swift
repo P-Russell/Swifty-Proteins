@@ -14,4 +14,8 @@ class Connect {
     init(connects : [Int]) {
         self.connects = connects
     }
+    
+    init () {
+        self.connects = []
+    }
 }
