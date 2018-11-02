@@ -31,6 +31,14 @@ class SceneViewController: UIViewController {
         initView()
         initCamera()
         initScene()
+        renderLigand()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    private func renderLigand() {
         if let lig = ligand {
             for a in lig.atoms {
                 addAtom(atom: a)
@@ -44,10 +52,6 @@ class SceneViewController: UIViewController {
                 }
             }
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     func initView() {
