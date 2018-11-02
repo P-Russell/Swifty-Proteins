@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		73B85C6D86B863D501919A38 /* Pods_Swifty_Proteins.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC0548B34D58467157B717D /* Pods_Swifty_Proteins.framework */; };
+		C7052E02218C3D8400E4B0BB /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7052E01218C3D8400E4B0BB /* SceneViewController.swift */; };
+		C7052E2A218C4EEA00E4B0BB /* StubData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7052E29218C4EEA00E4B0BB /* StubData.swift */; };
 		C70F4A8D2189D31800B1A586 /* Atom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70F4A8C2189D31800B1A586 /* Atom.swift */; };
 		C76B3BBB218AF6A2002E43E0 /* ProteinDataBankAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76B3BBA218AF6A2002E43E0 /* ProteinDataBankAPI.swift */; };
 		C76B3BBD218B0927002E43E0 /* Connect.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76B3BBC218B0927002E43E0 /* Connect.swift */; };
@@ -23,6 +25,8 @@
 		3EBFA4755F55087B2B2A4340 /* Pods-Swifty-Proteins.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifty-Proteins.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swifty-Proteins/Pods-Swifty-Proteins.release.xcconfig"; sourceTree = "<group>"; };
 		86DFD71DAD506A258932AD9C /* Pods-Swifty-Proteins.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifty-Proteins.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swifty-Proteins/Pods-Swifty-Proteins.debug.xcconfig"; sourceTree = "<group>"; };
 		ADC0548B34D58467157B717D /* Pods_Swifty_Proteins.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swifty_Proteins.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7052E01218C3D8400E4B0BB /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
+		C7052E29218C4EEA00E4B0BB /* StubData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubData.swift; sourceTree = "<group>"; };
 		C70F4A8C2189D31800B1A586 /* Atom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Atom.swift; sourceTree = "<group>"; };
 		C76B3BBA218AF6A2002E43E0 /* ProteinDataBankAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProteinDataBankAPI.swift; sourceTree = "<group>"; };
 		C76B3BBC218B0927002E43E0 /* Connect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connect.swift; sourceTree = "<group>"; };
@@ -91,11 +95,13 @@
 				C7BCE838218983E90058D67C /* Main.storyboard */,
 				C7BCE83B218983EA0058D67C /* Assets.xcassets */,
 				C7BCE83D218983EA0058D67C /* LaunchScreen.storyboard */,
-				C7BCE840218983EA0058D67C /* Info.plist */,
 				C70F4A8C2189D31800B1A586 /* Atom.swift */,
 				C76B3BBA218AF6A2002E43E0 /* ProteinDataBankAPI.swift */,
+				C7BCE840218983EA0058D67C /* Info.plist */,
 				C76B3BBC218B0927002E43E0 /* Connect.swift */,
 				C76B3BBE218B0AA2002E43E0 /* Ligand.swift */,
+				C7052E01218C3D8400E4B0BB /* SceneViewController.swift */,
+				C7052E29218C4EEA00E4B0BB /* StubData.swift */,
 			);
 			path = "Swifty-Proteins";
 			sourceTree = "<group>";
@@ -217,11 +223,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C76B3BBF218B0AA2002E43E0 /* Ligand.swift in Sources */,
+				C7052E2A218C4EEA00E4B0BB /* StubData.swift in Sources */,
 				C76B3BBB218AF6A2002E43E0 /* ProteinDataBankAPI.swift in Sources */,
 				C7BCE837218983E90058D67C /* ViewController.swift in Sources */,
 				C76B3BBD218B0927002E43E0 /* Connect.swift in Sources */,
 				C70F4A8D2189D31800B1A586 /* Atom.swift in Sources */,
 				C7BCE835218983E90058D67C /* AppDelegate.swift in Sources */,
+				C7052E02218C3D8400E4B0BB /* SceneViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,11 +14,18 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        pdbApi.fetch(ligand : "10S")
+        pdbApi.getStubData()
+//        pdbApi.fetch(ligand : "10S")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toSceneView" {
+            let nextScreen = segue.destination as! SceneViewController
+            if let ligand = pdbApi.ligand { nextScreen.ligand = ligand }
+        }
     }
 }

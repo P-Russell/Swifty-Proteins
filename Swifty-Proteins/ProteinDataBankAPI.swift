@@ -8,10 +8,15 @@
 
 import Foundation
 import Alamofire
+import SVProgressHUD
 
 class ProteinDataBankAPI {
     
     var ligand : Ligand?
+    
+    func getStubData() {
+        ligand = process(ligandData: StubData.ligTenS)
+    }
     
     private func newAtom(line : [Substring]) -> Atom {
         if let index = Int(line[1]),
@@ -54,11 +59,14 @@ class ProteinDataBankAPI {
     }
     
     func fetch(ligand : String) {
+        SVProgressHUD.show(withStatus: "Fetching data for \(ligand) ligand")
         guard let url = URL(string: "https://files.rcsb.org/ligands/view/\(ligand)_ideal.pdb") else { return }
         Alamofire.request(url, method : .get).validate().responseString(queue: DispatchQueue.main, encoding: String.Encoding.ascii) { response in
             switch response.result {
             case .success:
                 self.ligand = self.process(ligandData: response.result.value!)
+                SVProgressHUD.dismiss()
+                break
 //                for e in self.ligand!.atoms {
 //                    print ("ATOM index: \(e.index) x: \(e.x) y: \(e.y) z: \(e.z) sym: \(e.symbol)")
 //                }
@@ -69,6 +77,7 @@ class ProteinDataBankAPI {
 //                }
             case .failure(let error):
                 print(error)
+                SVProgressHUD.dismiss()
             }
         }
     }
