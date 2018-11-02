@@ -13,18 +13,6 @@ class ProteinDataBankAPI {
     
     var ligand : Ligand?
     
-    private func splitOnNewLine(str : String) -> [String] {
-        var lines: [String] = []
-        str.enumerateLines { line, _ in
-            lines.append(line)
-        }
-        return lines
-    }
-    
-    private func splitOnWhiteSpace(str : String) -> [String] {
-        return str.components(separatedBy: " ")
-    }
-    
     private func newAtom(line : [Substring]) -> Atom {
         if let index = Int(line[1]),
         let x = Float(line[6]),
@@ -48,7 +36,7 @@ class ProteinDataBankAPI {
     
     private func process(ligandData : String) -> Ligand {
         let localLigand : Ligand = Ligand()
-        let lines = splitOnNewLine(str: ligandData)
+        let lines = ligandData.split(separator: "\n")
         for line in lines {
             var token = line.split(separator: " ")
             switch token[0] {
@@ -57,8 +45,7 @@ class ProteinDataBankAPI {
                 break
             case "CONECT":
                 if token.count > 0 { localLigand.connections.append(newConnect(line: token))}
-            case "END":
-                return localLigand
+                break
             default:
                 continue
             }
@@ -72,14 +59,14 @@ class ProteinDataBankAPI {
             switch response.result {
             case .success:
                 self.ligand = self.process(ligandData: response.result.value!)
-                for e in self.ligand!.atoms {
-                    print ("ATOM index: \(e.index) x: \(e.x) y: \(e.y) z: \(e.z) sym: \(e.symbol)")
-                }
-                for e in self.ligand!.connections {
-                    print ("CONECT : ", terminator: "")
-                    for node in e.connects { print (node, terminator: " ") }
-                    print()
-                }
+//                for e in self.ligand!.atoms {
+//                    print ("ATOM index: \(e.index) x: \(e.x) y: \(e.y) z: \(e.z) sym: \(e.symbol)")
+//                }
+//                for e in self.ligand!.connections {
+//                    print ("CONECT : ", terminator: "")
+//                    for node in e.connects { print (node, terminator: " ") }
+//                    print()
+//                }
             case .failure(let error):
                 print(error)
             }
