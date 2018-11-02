@@ -24,6 +24,7 @@ class SceneViewController: UIViewController {
     
     var ligand : Ligand?
     var atoms : [Atom] = [Atom]()
+    var colors : Dictionary = [String : UIColor]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,39 +76,15 @@ class SceneViewController: UIViewController {
     
     func addAtom (atom : Atom) {
         let geometry : SCNGeometry = SCNSphere(radius: 0.5)
-        //carbon (C) that are found in organic compounds include hydrogen (H), oxygen (O), nitrogen (N), phosphorus (P), and sulfur (S).
-        switch atom.symbol {
-        case "C":
-            geometry.materials.first?.diffuse.contents = UIColor.red
-            break
-        case "H":
-            geometry.materials.first?.diffuse.contents = UIColor.blue
-            break
-        case "O":
-            geometry.materials.first?.diffuse.contents = UIColor.white
-            break
-        case "N":
-            geometry.materials.first?.diffuse.contents = UIColor.green
-            break
-        case "P":
-            geometry.materials.first?.diffuse.contents = UIColor.orange
-            break
-        case "S":
-            geometry.materials.first?.diffuse.contents = UIColor.yellow
-            break
-        case "B":
-            geometry.materials.first?.diffuse.contents = UIColor.purple
-            break
-        default:
-            geometry.materials.first?.diffuse.contents = UIColor.brown
-        }
+        let color : UIColor = Colors.map[atom.symbol] ?? UIColor.init(red: 221, green: 114, blue: 255, alpha: 1) // default pink
+        geometry.materials.first?.diffuse.contents = color
         
         let geometryNode = SCNNode(geometry: geometry)
         geometryNode.position = SCNVector3(x : atom.x, y : atom.y, z : atom.z)
         gameScene.rootNode.addChildNode(geometryNode)
     }
     
-    func distance(atom1 : Atom, atom2 : Atom) -> CGFloat {
+    private func distance(atom1 : Atom, atom2 : Atom) -> CGFloat {
         let vector = SCNVector3(
             atom2.x - atom1.x,
             atom2.y - atom1.y,
@@ -116,20 +93,20 @@ class SceneViewController: UIViewController {
         return CGFloat(sqrtf(vector.x * vector.x + vector.y * vector.y + vector.z * vector.z))
     }
     
-    func midPoint(a1 : Atom, a2 : Atom) -> SCNVector3 {
+    private func midPoint(a1 : Atom, a2 : Atom) -> SCNVector3 {
         return SCNVector3((a1.x + a2.x) / 2, (a1.y + a2.y) / 2, (a1.z + a2.z) / 2)
     }
     
-    func differenceAtomPosition(a1 : Atom, a2 : Atom) -> SCNVector3 {
+    private func differenceAtomPosition(a1 : Atom, a2 : Atom) -> SCNVector3 {
         return SCNVector3(a1.x - a2.x, a1.y - a2.y, a1.z - a2.z)
     }
     
-    func distanceFromOrigin(vec : SCNVector3) -> Float {
+    private func distanceFromOrigin(vec : SCNVector3) -> Float {
         return sqrtf(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z)
     }
     
 //    https://stackoverflow.com/questions/35002232/draw-scenekit-object-between-two-points
-    func lineEulerAngles(vector: SCNVector3) -> SCNVector3 {
+    private func lineEulerAngles(vector: SCNVector3) -> SCNVector3 {
         let height = distanceFromOrigin(vec: vector)
         let lxz = sqrtf(vector.x * vector.x + vector.z * vector.z)
         let pitchB = vector.y < 0 ? Float.pi - asinf(lxz / height) : asinf(lxz / height)
@@ -147,7 +124,7 @@ class SceneViewController: UIViewController {
         return SCNVector3(CGFloat(pitch), CGFloat(yaw), 0)
     }
     
-    func addConnetion (atom1 : Atom, atom2 : Atom) {
+    private func addConnetion (atom1 : Atom, atom2 : Atom) {
         let cylinder : SCNGeometry = SCNCylinder(radius: 0.2, height: distance(atom1: atom1, atom2: atom2))
         cylinder.materials.first?.diffuse.contents = UIColor.gray
         
@@ -157,7 +134,6 @@ class SceneViewController: UIViewController {
         node.eulerAngles = lineEulerAngles(vector: vector)
         gameScene.rootNode.addChildNode(node)
     }
-    
 }
 
 
