@@ -45,7 +45,7 @@ class ProteinTableViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if LigandList.isInit(){
-            if pdb.oldFetch(ligand: LigandList.ligands![indexPath.row - 1]) {
+            if pdb.oldFetch(ligand: LigandList.ligands![indexPath.row]) {
                 performSegue(withIdentifier: "showLigand", sender: nil)
             }
             //todo : Alert the user that something went wrong
