@@ -8,6 +8,12 @@
 
 import UIKit
 
+class LigandCell : UITableViewCell {
+    @IBOutlet weak var ligandLabel: UILabel!
+    @IBOutlet weak var indexLabel: UILabel!
+    
+}
+
 class ProteinTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBAction func backToLogin(_ sender: UIBarButtonItem) {
@@ -32,10 +38,12 @@ class ProteinTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style : UITableViewCellStyle.default, reuseIdentifier: "cell")
-        cell.textLabel?.adjustsFontSizeToFitWidth = true
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath) as! LigandCell
+        cell.ligandLabel?.adjustsFontSizeToFitWidth = true
+        cell.indexLabel?.adjustsFontSizeToFitWidth = true
         if LigandList.isInit() {
-            cell.textLabel?.text = LigandList.ligands![indexPath.row]
+            cell.indexLabel.text = String(indexPath.row + 1)
+            cell.ligandLabel?.text = LigandList.ligands![indexPath.row]
         }
         else {
             cell.textLabel?.text = "Error"
