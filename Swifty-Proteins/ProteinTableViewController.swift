@@ -10,6 +10,11 @@ import UIKit
 
 class ProteinTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBAction func backToLogin(_ sender: UIBarButtonItem) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "LoginScreen") as! LoginViewController
+        self.present(newViewController, animated: true, completion: nil)
+    }
     let pdb : ProteinDataBankAPI = ProteinDataBankAPI()
     
     override func viewDidLoad() {
