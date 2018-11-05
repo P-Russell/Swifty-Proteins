@@ -43,7 +43,7 @@ class ProteinTableViewController: UIViewController, UITableViewDelegate, UITable
             if pdb.oldFetch(ligand: LigandList.ligands![indexPath.row - 1]) {
                 performSegue(withIdentifier: "showLigand", sender: nil)
             }
-            //todo : Alert the user that somthing went wrong
+            //todo : Alert the user that something went wrong
         }
     }
     
