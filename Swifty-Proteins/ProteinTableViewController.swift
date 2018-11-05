@@ -12,7 +12,6 @@ import SVProgressHUD
 class LigandCell : UITableViewCell {
     @IBOutlet weak var ligandLabel: UILabel!
     @IBOutlet weak var indexLabel: UILabel!
-    
 }
 
 class ProteinTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -25,7 +24,9 @@ class ProteinTableViewController: UIViewController, UITableViewDelegate, UITable
         self.present(newViewController, animated: true, completion: nil)
     }
 
-    let pdb : ProteinDataBankAPI = ProteinDataBankAPI()
+//    let pdb : ProteinDataBankAPI = ProteinDataBankAPI()
+    
+    var userSelection : String?
     
     override func viewDidLoad() {
         _ = LigandList.init()
@@ -56,21 +57,21 @@ class ProteinTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     
-    @objc func doSegue() {
-        SVProgressHUD.dismiss()
-        performSegue(withIdentifier: "showLigand", sender: nil)
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            SVProgressHUD.show(withStatus: "Fetching data for \(LigandList.ligands![indexPath.row]) ligand")
-            if self.pdb.oldFetch(ligand: LigandList.ligands![indexPath.row]) {
-                DispatchQueue.main.async {
-                    self.doSegue()
-                }
-            }
-        }
-    }
+//    @objc func doSegue() {
+//        SVProgressHUD.dismiss()
+//        performSegue(withIdentifier: "showLigand", sender: nil)
+//    }
+//
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            SVProgressHUD.show(withStatus: "Fetching data for \(LigandList.ligands![indexPath.row]) ligand")
+//            if self.pdb.oldFetch(ligand: LigandList.ligands![indexPath.row]) {
+//                DispatchQueue.main.async {
+//                    self.doSegue()
+//                }
+//            }
+//        }
+//    }
     
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        if LigandList.isInit(){
@@ -83,10 +84,16 @@ class ProteinTableViewController: UIViewController, UITableViewDelegate, UITable
 //        }
 //    }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if LigandList.isInit() {
+            userSelection = LigandList.ligands![indexPath.row]
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showLigand" {
             let nextScreen = segue.destination as! SceneViewController
-            if let ligand = pdb.ligand { nextScreen.ligand = ligand }
+            if let ligand = userSelection { nextScreen.displayLigand = ligand }
         }
     }
 }

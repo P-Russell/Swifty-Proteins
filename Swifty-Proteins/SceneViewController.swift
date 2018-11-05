@@ -8,6 +8,7 @@
 
 import UIKit
 import SceneKit
+import SVProgressHUD
 
 
 class SceneViewController: UIViewController {
@@ -34,7 +35,16 @@ class SceneViewController: UIViewController {
         initView()
         initCamera()
         initScene()
-        renderLigand()
+        if let ligand = displayLigand {
+            DispatchQueue.global(qos: .userInitiated).async {
+                SVProgressHUD.show(withStatus: "Fetching data for \(ligand) ligand")
+                if self.proteinAPI.oldFetch(ligand: ligand) {
+                    DispatchQueue.main.async {
+                        self.renderLigand()
+                    }
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,7 +52,7 @@ class SceneViewController: UIViewController {
     }
     
     private func renderLigand() {
-        if let lig = ligand {
+        if let lig = proteinAPI.ligand {
             for a in lig.atoms {
                 addAtom(atom: a)
             }
