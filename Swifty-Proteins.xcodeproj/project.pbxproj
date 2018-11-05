@@ -16,10 +16,12 @@
 		C76B3BBD218B0927002E43E0 /* Connect.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76B3BBC218B0927002E43E0 /* Connect.swift */; };
 		C76B3BBF218B0AA2002E43E0 /* Ligand.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76B3BBE218B0AA2002E43E0 /* Ligand.swift */; };
 		C7BCE835218983E90058D67C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BCE834218983E90058D67C /* AppDelegate.swift */; };
-		C7BCE837218983E90058D67C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BCE836218983E90058D67C /* ViewController.swift */; };
 		C7BCE83A218983E90058D67C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7BCE838218983E90058D67C /* Main.storyboard */; };
 		C7BCE83C218983EA0058D67C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7BCE83B218983EA0058D67C /* Assets.xcassets */; };
 		C7BCE83F218983EA0058D67C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7BCE83D218983EA0058D67C /* LaunchScreen.storyboard */; };
+		C7C922A3219028B00064AFCC /* ProteinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C922A2219028B00064AFCC /* ProteinTableViewController.swift */; };
+		C7C922A7219029F70064AFCC /* LigandList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C922A6219029F70064AFCC /* LigandList.swift */; };
+		C7C922AD21903AB10064AFCC /* ligands.txt in Resources */ = {isa = PBXBuildFile; fileRef = C7C922AC21903AB10064AFCC /* ligands.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,11 +37,13 @@
 		C76B3BBE218B0AA2002E43E0 /* Ligand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ligand.swift; sourceTree = "<group>"; };
 		C7BCE831218983E90058D67C /* Swifty-Proteins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swifty-Proteins.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7BCE834218983E90058D67C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C7BCE836218983E90058D67C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C7BCE839218983E90058D67C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C7BCE83B218983EA0058D67C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7BCE83E218983EA0058D67C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C7BCE840218983EA0058D67C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7C922A2219028B00064AFCC /* ProteinTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProteinTableViewController.swift; sourceTree = "<group>"; };
+		C7C922A6219029F70064AFCC /* LigandList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LigandList.swift; sourceTree = "<group>"; };
+		C7C922AC21903AB10064AFCC /* ligands.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ligands.txt; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,8 +96,8 @@
 		C7BCE833218983E90058D67C /* Swifty-Proteins */ = {
 			isa = PBXGroup;
 			children = (
+				C7C922AC21903AB10064AFCC /* ligands.txt */,
 				C7BCE834218983E90058D67C /* AppDelegate.swift */,
-				C7BCE836218983E90058D67C /* ViewController.swift */,
 				C7BCE838218983E90058D67C /* Main.storyboard */,
 				C7BCE83B218983EA0058D67C /* Assets.xcassets */,
 				C7BCE83D218983EA0058D67C /* LaunchScreen.storyboard */,
@@ -105,6 +109,8 @@
 				C7052E01218C3D8400E4B0BB /* SceneViewController.swift */,
 				C7052E29218C4EEA00E4B0BB /* StubData.swift */,
 				C7052E2B218C86D600E4B0BB /* Colors.swift */,
+				C7C922A2219028B00064AFCC /* ProteinTableViewController.swift */,
+				C7C922A6219029F70064AFCC /* LigandList.swift */,
 			);
 			path = "Swifty-Proteins";
 			sourceTree = "<group>";
@@ -172,6 +178,7 @@
 				C7BCE83F218983EA0058D67C /* LaunchScreen.storyboard in Resources */,
 				C7BCE83C218983EA0058D67C /* Assets.xcassets in Resources */,
 				C7BCE83A218983E90058D67C /* Main.storyboard in Resources */,
+				C7C922AD21903AB10064AFCC /* ligands.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,11 +233,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C76B3BBF218B0AA2002E43E0 /* Ligand.swift in Sources */,
+				C7C922A7219029F70064AFCC /* LigandList.swift in Sources */,
 				C7052E2C218C86D600E4B0BB /* Colors.swift in Sources */,
 				C7052E2A218C4EEA00E4B0BB /* StubData.swift in Sources */,
 				C76B3BBB218AF6A2002E43E0 /* ProteinDataBankAPI.swift in Sources */,
-				C7BCE837218983E90058D67C /* ViewController.swift in Sources */,
 				C76B3BBD218B0927002E43E0 /* Connect.swift in Sources */,
+				C7C922A3219028B00064AFCC /* ProteinTableViewController.swift in Sources */,
 				C70F4A8D2189D31800B1A586 /* Atom.swift in Sources */,
 				C7BCE835218983E90058D67C /* AppDelegate.swift in Sources */,
 				C7052E02218C3D8400E4B0BB /* SceneViewController.swift in Sources */,

@@ -24,7 +24,10 @@ class SceneViewController: UIViewController {
     
     var ligand : Ligand?
     var atoms : [Atom] = [Atom]()
-    var colors : Dictionary = [String : UIColor]()
+    var displayLigand : String?
+    
+    let proteinAPI : ProteinDataBankAPI = ProteinDataBankAPI()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
