@@ -74,22 +74,20 @@ class ProteinDataBankAPI {
         }
     }
     
-    func oldFetch(ligand : String) -> Bool{
-        SVProgressHUD.show(withStatus: "Fetching data for \(ligand) ligand")
+    var success : Bool = false
+    
+    func oldFetch(ligand : String) -> Bool {
         if let url = URL(string: "https://files.rcsb.org/ligands/view/\(ligand)_ideal.pdb") {
             do {
                 let contents = try String(contentsOf: url)
                 self.ligand = process(ligandData: contents)
-                SVProgressHUD.dismiss()
                 return true
             } catch {
                 print("Error fetching data from URL")
-                SVProgressHUD.dismiss()
                 return false
             }
         } else {
             print("Bad URL")
-            SVProgressHUD.dismiss()
             return false
         }
     }

@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class ProteinTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var activity: UIActivityIndicatorView!
     let pdb : ProteinDataBankAPI = ProteinDataBankAPI()
     
     override func viewDidLoad() {
@@ -38,14 +40,42 @@ class ProteinTableViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if LigandList.isInit(){
-            if pdb.oldFetch(ligand: LigandList.ligands![indexPath.row]) {
-                performSegue(withIdentifier: "showLigand", sender: nil)
+    func dosomeStuff() {
+        DispatchQueue.global(qos: .userInitiated).async {
+            SVProgressHUD.show()
+            DispatchQueue.main.async {
+//                Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.doSeque), userInfo: nil, repeats: true)
+                self.doSeque()
             }
-            //todo : Alert the user that something went wrong
         }
     }
+    
+    @objc func doSegue() {
+        SVProgressHUD.dismiss()
+        performSegue(withIdentifier: "showLigand", sender: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            SVProgressHUD.show(withStatus: "Fetching data for \(LigandList.ligands![indexPath.row]) ligand")
+            if self.pdb.oldFetch(ligand: LigandList.ligands![indexPath.row]) {
+                DispatchQueue.main.async {
+                    self.doSegue()
+                }
+            }
+        }
+    }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if LigandList.isInit(){
+//            if pdb.oldFetch(ligand: LigandList.ligands![indexPath.row]) {
+//                performSegue(withIdentifier: "showLigand", sender: nil)
+//            }
+//            else {
+//                //todo : Alert the user that something went wrong
+//            }
+//        }
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showLigand" {
