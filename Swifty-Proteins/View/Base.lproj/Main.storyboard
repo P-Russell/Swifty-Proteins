@@ -103,8 +103,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fyy-XC-Mnq">
+                                <rect key="frame" x="0.0" y="64" width="0.0" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="E6o-As-Y1l" id="kAm-LO-Vkr"/>
+                                </connections>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="r5c-TG-E1Y">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LabelCell" id="Dgu-f5-Yfy" customClass="LigandCell" customModule="Swifty_Proteins" customModuleProvider="target">
@@ -144,10 +155,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="r5c-TG-E1Y" firstAttribute="top" secondItem="FFP-Zg-W1z" secondAttribute="top" id="Jz2-Ms-2q3"/>
-                            <constraint firstItem="r5c-TG-E1Y" firstAttribute="leading" secondItem="FFP-Zg-W1z" secondAttribute="leading" id="eS1-eS-xkd"/>
-                            <constraint firstItem="r5c-TG-E1Y" firstAttribute="bottom" secondItem="FFP-Zg-W1z" secondAttribute="bottom" id="yFU-gR-5kn"/>
-                            <constraint firstItem="r5c-TG-E1Y" firstAttribute="trailing" secondItem="FFP-Zg-W1z" secondAttribute="trailing" id="zes-EX-OtO"/>
+                            <constraint firstItem="r5c-TG-E1Y" firstAttribute="top" secondItem="Fyy-XC-Mnq" secondAttribute="bottom" id="5mG-cg-ZUx"/>
+                            <constraint firstItem="r5c-TG-E1Y" firstAttribute="leading" secondItem="FFP-Zg-W1z" secondAttribute="leading" id="6Ri-LV-4tL"/>
+                            <constraint firstItem="r5c-TG-E1Y" firstAttribute="bottom" secondItem="FFP-Zg-W1z" secondAttribute="bottom" id="Bup-a6-MR1"/>
+                            <constraint firstItem="Fyy-XC-Mnq" firstAttribute="top" secondItem="FFP-Zg-W1z" secondAttribute="top" id="KAG-9N-YK1"/>
+                            <constraint firstItem="Fyy-XC-Mnq" firstAttribute="trailing" secondItem="FFP-Zg-W1z" secondAttribute="trailing" id="O1E-Vn-b5x"/>
+                            <constraint firstItem="Fyy-XC-Mnq" firstAttribute="leading" secondItem="FFP-Zg-W1z" secondAttribute="leading" id="O5P-iU-IbB"/>
+                            <constraint firstItem="r5c-TG-E1Y" firstAttribute="trailing" secondItem="FFP-Zg-W1z" secondAttribute="trailing" id="S9M-ML-QuM"/>
+                            <constraint firstItem="r5c-TG-E1Y" firstAttribute="top" secondItem="Fyy-XC-Mnq" secondAttribute="bottom" id="w1P-77-scd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FFP-Zg-W1z"/>
                     </view>
@@ -159,12 +174,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="Dfk-nN-aTu" id="dWN-Vx-SkU"/>
+                        <outlet property="tableView" destination="r5c-TG-E1Y" id="7AC-a6-GcC"/>
                         <segue destination="tpf-Yv-tTm" kind="show" identifier="showLigand" id="ucO-jy-Dg4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9N-FU-SPg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="86" y="125"/>
+            <point key="canvasLocation" x="85.599999999999994" y="124.58770614692655"/>
         </scene>
     </scenes>
 </document>

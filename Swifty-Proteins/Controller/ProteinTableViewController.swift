@@ -14,10 +14,11 @@ class LigandCell : UITableViewCell {
     @IBOutlet weak var indexLabel: UILabel!
 }
 
-class ProteinTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ProteinTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
-    @IBOutlet weak var activity: UIActivityIndicatorView!
-
+    @IBOutlet var searchBar: UIView!
+    @IBOutlet weak var tableView: UITableView!
+    
     @IBAction func backToLogin(_ sender: UIBarButtonItem) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "LoginScreen") as! LoginViewController
@@ -25,6 +26,8 @@ class ProteinTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     var userSelection : String?
+    var searchList : [String] = [String]()
+    var searching : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +38,21 @@ class ProteinTableViewController: UIViewController, UITableViewDelegate, UITable
         super.didReceiveMemoryWarning()
     }
     
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if let ligandList = LigandList.ligands {
+            searchList = ligandList.filter({$0.prefix(searchText.count) == searchText})
+            searching = true
+            tableView.reloadData()
+        }
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if LigandList.isInit() { return LigandList.ligands!.count }
+        if LigandList.isInit() {
+            if searching { return searchList.count }
+            else { return LigandList.ligands!.count }
+        }
         else { return 0 }
     }
     
@@ -45,8 +61,14 @@ class ProteinTableViewController: UIViewController, UITableViewDelegate, UITable
         cell.ligandLabel?.adjustsFontSizeToFitWidth = true
         cell.indexLabel?.adjustsFontSizeToFitWidth = true
         if LigandList.isInit() {
-            cell.indexLabel.text = String(indexPath.row + 1)
-            cell.ligandLabel?.text = LigandList.ligands![indexPath.row]
+            if searching {
+                cell.indexLabel.text = String(indexPath.row + 1)
+                cell.ligandLabel?.text = searchList[indexPath.row]
+            }
+            else {
+                cell.indexLabel.text = String(indexPath.row + 1)
+                cell.ligandLabel?.text = LigandList.ligands![indexPath.row]
+            }
         }
         else {
             cell.textLabel?.text = "Error"
@@ -56,7 +78,8 @@ class ProteinTableViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if LigandList.isInit() {
-            userSelection = LigandList.ligands![indexPath.row]
+            if searching { userSelection = searchList[indexPath.row] }
+            else { userSelection = LigandList.ligands![indexPath.row] }
             performSegue(withIdentifier: "showLigand", sender: nil)
         }
     }
