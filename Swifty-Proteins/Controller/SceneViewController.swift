@@ -93,8 +93,8 @@ class SceneViewController: UIViewController {
     func initCamera() {
         cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3(x : 0, y : 5, z : 10)
-//        gameScene.rootNode.addChildNode(cameraNode)
+        cameraNode.position = SCNVector3(x : 0, y : 0, z : 25)
+        gameScene.rootNode.addChildNode(cameraNode)
     }
     
     func createTarget() {
@@ -174,8 +174,6 @@ class SceneViewController: UIViewController {
         
         if let hitObject = hitList.first {
             let node = hitObject.node
-            let constraint = SCNLookAtConstraint(target: node)
-            cameraNode.constraints = [constraint]
             if let name = node.name {
                 selectedAtom.isHidden = false
                 selectedAtom.text = "Selected Atom: \(name)"
@@ -183,21 +181,3 @@ class SceneViewController: UIViewController {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
