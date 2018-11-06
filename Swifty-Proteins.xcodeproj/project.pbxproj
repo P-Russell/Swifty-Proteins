@@ -98,24 +98,48 @@
 		C7BCE833218983E90058D67C /* Swifty-Proteins */ = {
 			isa = PBXGroup;
 			children = (
+				CDB3395D219193BA00EF7645 /* Controller */,
+				CDB3395C2191939900EF7645 /* View */,
+				CDB3395B2191939000EF7645 /* Model */,
 				C7C922AC21903AB10064AFCC /* ligands.txt */,
-				C7BCE834218983E90058D67C /* AppDelegate.swift */,
-				C7BCE838218983E90058D67C /* Main.storyboard */,
 				C7BCE83B218983EA0058D67C /* Assets.xcassets */,
-				C7BCE83D218983EA0058D67C /* LaunchScreen.storyboard */,
-				C70F4A8C2189D31800B1A586 /* Atom.swift */,
-				C76B3BBA218AF6A2002E43E0 /* ProteinDataBankAPI.swift */,
 				C7BCE840218983EA0058D67C /* Info.plist */,
-				C76B3BBC218B0927002E43E0 /* Connect.swift */,
-				C76B3BBE218B0AA2002E43E0 /* Ligand.swift */,
-				C7052E01218C3D8400E4B0BB /* SceneViewController.swift */,
-				C7052E29218C4EEA00E4B0BB /* StubData.swift */,
-				C7052E2B218C86D600E4B0BB /* Colors.swift */,
-				C7C922A2219028B00064AFCC /* ProteinTableViewController.swift */,
-				C7C922A6219029F70064AFCC /* LigandList.swift */,
-				23B0CA20219060CD005B3843 /* LoginViewController.swift */,
 			);
 			path = "Swifty-Proteins";
+			sourceTree = "<group>";
+		};
+		CDB3395B2191939000EF7645 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C7C922A6219029F70064AFCC /* LigandList.swift */,
+				C7052E2B218C86D600E4B0BB /* Colors.swift */,
+				C7052E29218C4EEA00E4B0BB /* StubData.swift */,
+				C76B3BBE218B0AA2002E43E0 /* Ligand.swift */,
+				C76B3BBC218B0927002E43E0 /* Connect.swift */,
+				C76B3BBA218AF6A2002E43E0 /* ProteinDataBankAPI.swift */,
+				C70F4A8C2189D31800B1A586 /* Atom.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CDB3395C2191939900EF7645 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C7BCE83D218983EA0058D67C /* LaunchScreen.storyboard */,
+				C7BCE838218983E90058D67C /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CDB3395D219193BA00EF7645 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C7BCE834218983E90058D67C /* AppDelegate.swift */,
+				23B0CA20219060CD005B3843 /* LoginViewController.swift */,
+				C7052E01218C3D8400E4B0BB /* SceneViewController.swift */,
+				C7C922A2219028B00064AFCC /* ProteinTableViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
