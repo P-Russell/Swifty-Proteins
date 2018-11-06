@@ -18,6 +18,8 @@ class ProteinTableViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet var searchBar: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBAction func shareButton(_ sender: Any) {
+    }
     
     @IBAction func backToLogin(_ sender: UIBarButtonItem) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)

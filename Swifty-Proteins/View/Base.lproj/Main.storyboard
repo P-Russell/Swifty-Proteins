@@ -44,7 +44,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kM5-ez-bdz"/>
                     </view>
-                    <navigationItem key="navigationItem" id="MQa-T7-3hR"/>
+                    <navigationItem key="navigationItem" id="MQa-T7-3hR">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="COU-lA-2TP">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="S7h-zO-pSb">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Share"/>
+                                <connections>
+                                    <action selector="shareButtonPressed:" destination="tpf-Yv-tTm" eventType="touchUpInside" id="47q-b0-Sob"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="sceneView" destination="868-4M-ko4" id="3uw-IU-wIT"/>
                         <outlet property="selectedAtom" destination="NLi-o5-u7C" id="fEf-dy-qkL"/>

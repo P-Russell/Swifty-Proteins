@@ -15,6 +15,11 @@ class SceneViewController: UIViewController {
   
     @IBOutlet weak var selectedAtom: UILabel!
     
+    @IBAction func shareButtonPressed(_ sender: Any) {
+        print("Share Button Pressed")
+        shareImage()
+    }
+    
     @IBOutlet weak var sceneView: SCNView! {
         willSet {
             newValue.allowsCameraControl = true
@@ -175,9 +180,23 @@ class SceneViewController: UIViewController {
         if let hitObject = hitList.first {
             let node = hitObject.node
             if let name = node.name {
+//                let constraint = SCNLookAtConstraint(target: node)
+//                cameraNode.constraints = [constraint]
+//                cameraNode.look(at: node.position)
                 selectedAtom.isHidden = false
                 selectedAtom.text = "Selected Atom: \(name)"
             }
         }
     }
+    
+    func shareImage() {
+        let bounds = UIScreen.main.bounds
+        UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
+        self.view.drawHierarchy(in: bounds, afterScreenUpdates: false)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        let activityViewController = UIActivityViewController(activityItems: [img!], applicationActivities: nil)
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+    
 }
