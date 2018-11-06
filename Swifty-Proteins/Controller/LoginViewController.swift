@@ -13,10 +13,14 @@ class LoginViewController: UIViewController {
     @IBAction func loginButton(_ sender: UIButton) {
         moveToTable()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        moveToTable()
     }
 
     override func didReceiveMemoryWarning() {

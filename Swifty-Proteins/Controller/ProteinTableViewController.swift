@@ -29,8 +29,8 @@ class ProteinTableViewController: UIViewController, UITableViewDelegate, UITable
     var userSelection : String?
     
     override func viewDidLoad() {
-        _ = LigandList.init()
         super.viewDidLoad()
+        _ = LigandList.init()
     }
 
     override func didReceiveMemoryWarning() {
