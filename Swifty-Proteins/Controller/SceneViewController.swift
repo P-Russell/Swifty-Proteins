@@ -13,6 +13,8 @@ import SVProgressHUD
 
 class SceneViewController: UIViewController {
   
+    @IBOutlet weak var selectedAtom: UILabel!
+    
     @IBOutlet weak var sceneView: SCNView! {
         willSet {
             newValue.allowsCameraControl = true
@@ -32,21 +34,27 @@ class SceneViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        selectedAtom.isHidden = true
         if let ligand = displayLigand {
             SVProgressHUD.show(withStatus: "Fetching data for \(ligand) ligand")
         }
         initView()
-        initCamera()
         initScene()
+        initCamera()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         if let ligand = displayLigand {
             DispatchQueue.global(qos: .userInitiated).async {
-                let _ = self.proteinAPI.oldFetch(ligand: ligand)
-                DispatchQueue.main.async {
-                    self.renderLigand()
-                    SVProgressHUD.dismiss()
+                if self.proteinAPI.oldFetch(ligand: ligand) {
+                    DispatchQueue.main.async {
+                        self.renderLigand()
+                        SVProgressHUD.dismiss()
+                    }
+                }
+                else {
+                    print("API Call Failed")
                 }
             }
         }
@@ -86,6 +94,7 @@ class SceneViewController: UIViewController {
         cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
         cameraNode.position = SCNVector3(x : 0, y : 5, z : 10)
+//        gameScene.rootNode.addChildNode(cameraNode)
     }
     
     func createTarget() {
@@ -102,6 +111,7 @@ class SceneViewController: UIViewController {
         geometry.materials.first?.diffuse.contents = color
         
         let geometryNode = SCNNode(geometry: geometry)
+        geometryNode.name = String(atom.index) + " " + (AtomsNames.map[atom.symbol] ?? atom.symbol)
         geometryNode.position = SCNVector3(x : atom.x, y : atom.y, z : atom.z)
         gameScene.rootNode.addChildNode(geometryNode)
     }
@@ -155,6 +165,22 @@ class SceneViewController: UIViewController {
         let vector : SCNVector3 = differenceAtomPosition(a1: atom1, a2: atom2)
         node.eulerAngles = lineEulerAngles(vector: vector)
         gameScene.rootNode.addChildNode(node)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first!
+        let location = touch.location(in: gameView)
+        let hitList = gameView.hitTest(location, options : nil)
+        
+        if let hitObject = hitList.first {
+            let node = hitObject.node
+            let constraint = SCNLookAtConstraint(target: node)
+            cameraNode.constraints = [constraint]
+            if let name = node.name {
+                selectedAtom.isHidden = false
+                selectedAtom.text = "Selected Atom: \(name)"
+            }
+        }
     }
 }
 

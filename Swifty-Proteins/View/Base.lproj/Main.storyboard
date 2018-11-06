@@ -22,10 +22,22 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </sceneKitView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Atom:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLi-o5-u7C">
+                                <rect key="frame" x="0.0" y="64" width="375" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Uja-Ck-O1H"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="NLi-o5-u7C" firstAttribute="trailing" secondItem="kM5-ez-bdz" secondAttribute="trailing" id="08X-kg-mCE"/>
                             <constraint firstItem="868-4M-ko4" firstAttribute="leading" secondItem="kM5-ez-bdz" secondAttribute="leading" id="2yR-da-mZK"/>
+                            <constraint firstItem="NLi-o5-u7C" firstAttribute="top" secondItem="kM5-ez-bdz" secondAttribute="top" id="4GB-zx-ZAF"/>
+                            <constraint firstItem="NLi-o5-u7C" firstAttribute="leading" secondItem="kM5-ez-bdz" secondAttribute="leading" id="YKF-Xd-DR7"/>
                             <constraint firstItem="kM5-ez-bdz" firstAttribute="trailing" secondItem="868-4M-ko4" secondAttribute="trailing" id="eXr-Ht-K4O"/>
                             <constraint firstItem="868-4M-ko4" firstAttribute="top" secondItem="kM5-ez-bdz" secondAttribute="top" id="ujj-eo-qe1"/>
                             <constraint firstItem="kM5-ez-bdz" firstAttribute="bottom" secondItem="868-4M-ko4" secondAttribute="bottom" id="zSy-41-8oy"/>
@@ -35,6 +47,7 @@
                     <navigationItem key="navigationItem" id="MQa-T7-3hR"/>
                     <connections>
                         <outlet property="sceneView" destination="868-4M-ko4" id="3uw-IU-wIT"/>
+                        <outlet property="selectedAtom" destination="NLi-o5-u7C" id="fEf-dy-qkL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Th-Od-Fg5" userLabel="First Responder" sceneMemberID="firstResponder"/>

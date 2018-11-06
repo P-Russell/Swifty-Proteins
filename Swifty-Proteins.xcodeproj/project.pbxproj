@@ -23,6 +23,7 @@
 		C7C922A3219028B00064AFCC /* ProteinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C922A2219028B00064AFCC /* ProteinTableViewController.swift */; };
 		C7C922A7219029F70064AFCC /* LigandList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C922A6219029F70064AFCC /* LigandList.swift */; };
 		C7C922AD21903AB10064AFCC /* ligands.txt in Resources */ = {isa = PBXBuildFile; fileRef = C7C922AC21903AB10064AFCC /* ligands.txt */; };
+		CDB3395F2191A69300EF7645 /* AtomsNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB3395E2191A69300EF7645 /* AtomsNames.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		C7C922A2219028B00064AFCC /* ProteinTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProteinTableViewController.swift; sourceTree = "<group>"; };
 		C7C922A6219029F70064AFCC /* LigandList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LigandList.swift; sourceTree = "<group>"; };
 		C7C922AC21903AB10064AFCC /* ligands.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ligands.txt; sourceTree = SOURCE_ROOT; };
+		CDB3395E2191A69300EF7645 /* AtomsNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtomsNames.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				C76B3BBC218B0927002E43E0 /* Connect.swift */,
 				C76B3BBA218AF6A2002E43E0 /* ProteinDataBankAPI.swift */,
 				C70F4A8C2189D31800B1A586 /* Atom.swift */,
+				CDB3395E2191A69300EF7645 /* AtomsNames.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDB3395F2191A69300EF7645 /* AtomsNames.swift in Sources */,
 				C76B3BBF218B0AA2002E43E0 /* Ligand.swift in Sources */,
 				C7C922A7219029F70064AFCC /* LigandList.swift in Sources */,
 				C7052E2C218C86D600E4B0BB /* Colors.swift in Sources */,
