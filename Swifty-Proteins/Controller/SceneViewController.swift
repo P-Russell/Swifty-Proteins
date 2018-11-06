@@ -39,8 +39,8 @@ class SceneViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         if let ligand = displayLigand {
+            SVProgressHUD.show(withStatus: "Fetching data for \(ligand) ligand")
             DispatchQueue.global(qos: .userInitiated).async {
-                SVProgressHUD.show(withStatus: "Fetching data for \(ligand) ligand")
                 let _ = self.proteinAPI.oldFetch(ligand: ligand)
                 DispatchQueue.main.async {
                     self.renderLigand()
