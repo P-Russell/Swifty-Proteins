@@ -120,7 +120,6 @@
                                         <connections>
                                             <outlet property="indexLabel" destination="eYX-wk-xn9" id="1Cd-WV-RSL"/>
                                             <outlet property="ligandLabel" destination="U8a-b8-WTV" id="dSn-P5-dwL"/>
-                                            <segue destination="tpf-Yv-tTm" kind="show" identifier="showLigand" id="ODH-ty-QG4"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -146,6 +145,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="tpf-Yv-tTm" kind="show" identifier="showLigand" id="ucO-jy-Dg4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9N-FU-SPg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
