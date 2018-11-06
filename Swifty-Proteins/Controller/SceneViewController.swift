@@ -41,18 +41,17 @@ class SceneViewController: UIViewController {
         super.viewDidLoad()
         selectedAtom.isHidden = true
         if let ligand = displayLigand {
-            SVProgressHUD.show(withStatus: "Fetching data for \(ligand) ligand")
+            SVProgressHUD.show(withStatus: "Fetching data for \(ligand)")
         }
         initView()
         initScene()
         initCamera()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         if let ligand = displayLigand {
             DispatchQueue.global(qos: .userInitiated).async {
-                if self.proteinAPI.oldFetch(ligand: ligand) {
+                if self.proteinAPI.fetch(ligand: ligand) {
                     DispatchQueue.main.async {
                         self.renderLigand()
                         SVProgressHUD.dismiss()
@@ -60,6 +59,7 @@ class SceneViewController: UIViewController {
                 }
                 else {
                     print("API Call Failed")
+                    SVProgressHUD.showError(withStatus: "API Call Failed")
                 }
             }
         }

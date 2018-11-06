@@ -58,25 +58,28 @@ class ProteinDataBankAPI {
         }
         return localLigand
     }
-    func fetch(ligand : String) {
-        SVProgressHUD.show(withStatus: "Fetching data for \(ligand) ligand")
-        guard let url = URL(string: "https://files.rcsb.org/ligands/view/\(ligand)_ideal.pdb") else { return }
-        Alamofire.request(url, method : .get).validate().responseString(queue: DispatchQueue.main, encoding: String.Encoding.ascii) { response in
-            switch response.result {
-            case .success:
-                self.ligand = self.process(ligandData: response.result.value!)
-                SVProgressHUD.dismiss()
-                break
-            case .failure(let error):
-                print(error)
-                SVProgressHUD.dismiss()
-            }
-        }
-    }
     
     var success : Bool = false
     
-    func oldFetch(ligand : String) -> Bool {
+    func fetch(ligand : String) -> Bool {
+        
+        
+//        NSURLRequest * urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://google.com"]];
+//        NSURLResponse * response = nil;
+//        NSError * error = nil;
+//        NSData * data = [NSURLConnection sendSynchronousRequest:urlRequest
+//            returningResponse:&response
+//            error:&error];
+//
+//        if (error == nil)
+//        {
+//            // Parse data here
+//        }
+//
+        
+        
+        
+//        https://stackoverflow.com/questions/3027056/timeout-stringwithcontentsofurl
         if let url = URL(string: "https://files.rcsb.org/ligands/view/\(ligand)_ideal.pdb") {
             do {
                 let contents = try String(contentsOf: url)
@@ -91,29 +94,4 @@ class ProteinDataBankAPI {
             return false
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
