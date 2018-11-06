@@ -32,6 +32,9 @@ class SceneViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let ligand = displayLigand {
+            SVProgressHUD.show(withStatus: "Fetching data for \(ligand) ligand")
+        }
         initView()
         initCamera()
         initScene()
@@ -39,7 +42,6 @@ class SceneViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         if let ligand = displayLigand {
-            SVProgressHUD.show(withStatus: "Fetching data for \(ligand) ligand")
             DispatchQueue.global(qos: .userInitiated).async {
                 let _ = self.proteinAPI.oldFetch(ligand: ligand)
                 DispatchQueue.main.async {
