@@ -47,6 +47,11 @@ class ProteinTableViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searching = false
+        searchBar.text = ""
+        tableView.reloadData()
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if LigandList.isInit() {
