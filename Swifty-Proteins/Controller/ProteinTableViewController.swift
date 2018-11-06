@@ -23,8 +23,6 @@ class ProteinTableViewController: UIViewController, UITableViewDelegate, UITable
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "LoginScreen") as! LoginViewController
         self.present(newViewController, animated: true, completion: nil)
     }
-
-//    let pdb : ProteinDataBankAPI = ProteinDataBankAPI()
     
     var userSelection : String?
     
@@ -56,37 +54,10 @@ class ProteinTableViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
     
-    
-//    @objc func doSegue() {
-//        SVProgressHUD.dismiss()
-//        performSegue(withIdentifier: "showLigand", sender: nil)
-//    }
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            SVProgressHUD.show(withStatus: "Fetching data for \(LigandList.ligands![indexPath.row]) ligand")
-//            if self.pdb.oldFetch(ligand: LigandList.ligands![indexPath.row]) {
-//                DispatchQueue.main.async {
-//                    self.doSegue()
-//                }
-//            }
-//        }
-//    }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if LigandList.isInit(){
-//            if pdb.oldFetch(ligand: LigandList.ligands![indexPath.row]) {
-//                performSegue(withIdentifier: "showLigand", sender: nil)
-//            }
-//            else {
-//                //todo : Alert the user that something went wrong
-//            }
-//        }
-//    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if LigandList.isInit() {
             userSelection = LigandList.ligands![indexPath.row]
+            performSegue(withIdentifier: "showLigand", sender: nil)
         }
     }
     
