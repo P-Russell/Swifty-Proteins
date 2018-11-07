@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2337628B219320000066A007 /* protein.png in Resources */ = {isa = PBXBuildFile; fileRef = 2337628A219320000066A007 /* protein.png */; };
 		23B0CA21219060CD005B3843 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B0CA20219060CD005B3843 /* LoginViewController.swift */; };
 		73B85C6D86B863D501919A38 /* Pods_Swifty_Proteins.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC0548B34D58467157B717D /* Pods_Swifty_Proteins.framework */; };
 		C7052E02218C3D8400E4B0BB /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7052E01218C3D8400E4B0BB /* SceneViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2337628A219320000066A007 /* protein.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = protein.png; sourceTree = "<group>"; };
 		23B0CA20219060CD005B3843 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3EBFA4755F55087B2B2A4340 /* Pods-Swifty-Proteins.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifty-Proteins.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swifty-Proteins/Pods-Swifty-Proteins.release.xcconfig"; sourceTree = "<group>"; };
 		86DFD71DAD506A258932AD9C /* Pods-Swifty-Proteins.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifty-Proteins.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swifty-Proteins/Pods-Swifty-Proteins.debug.xcconfig"; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				CDB3395B2191939000EF7645 /* Model */,
 				C7C922AC21903AB10064AFCC /* ligands.txt */,
 				C7BCE83B218983EA0058D67C /* Assets.xcassets */,
+				2337628A219320000066A007 /* protein.png */,
 				C7BCE840218983EA0058D67C /* Info.plist */,
 			);
 			path = "Swifty-Proteins";
@@ -210,6 +213,7 @@
 				C7BCE83C218983EA0058D67C /* Assets.xcassets in Resources */,
 				C7BCE83A218983E90058D67C /* Main.storyboard in Resources */,
 				C7C922AD21903AB10064AFCC /* ligands.txt in Resources */,
+				2337628B219320000066A007 /* protein.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
