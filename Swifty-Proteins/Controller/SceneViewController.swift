@@ -137,7 +137,7 @@ class SceneViewController: UIViewController {
         geometry.materials.first?.diffuse.contents = color
         
         let geometryNode = SCNNode(geometry: geometry)
-        geometryNode.name = String(atom.index) + " " + (AtomsNames.map[atom.symbol] ?? atom.symbol)
+        geometryNode.name = AtomsNames.map[atom.symbol] ?? atom.symbol
         geometryNode.position = SCNVector3(x : atom.x, y : atom.y, z : atom.z)
         gameScene.rootNode.addChildNode(geometryNode)
     }

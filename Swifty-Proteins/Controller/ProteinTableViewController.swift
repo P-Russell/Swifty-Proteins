@@ -22,9 +22,7 @@ class ProteinTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @IBAction func backToLogin(_ sender: UIBarButtonItem) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "LoginScreen") as! LoginViewController
-        self.present(newViewController, animated: true, completion: nil)
+        performSegue(withIdentifier: "backToLogin", sender: nil)
     }
     
     var userSelection : String?
