@@ -44,12 +44,14 @@ class LoginViewController: UIViewController {
             let reason = "Authenticate with Touch ID"
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason, reply:
                 {(success, error) in
+                    DispatchQueue.main.async {
                     // 4
-                    if success {
-                        self.performSegue(withIdentifier: "loginSegue", sender: nil)
-                    }
-                    else {
-                        self.showAlertController("Touch ID Authentication Failed")
+                        if success {
+                            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                        }
+                        else {
+                            self.showAlertController("Touch ID Authentication Failed")
+                        }
                     }
                     } as (Bool, Error?) -> Void)
         }
