@@ -46,7 +46,6 @@ class LoginViewController: UIViewController {
                     // 4
                     if success {
                         self.performSegue(withIdentifier: "loginSegue", sender: nil)
-                        self.showAlertController("Touch ID Authentication Succeeded")
                     }
                     else {
                         self.showAlertController("Touch ID Authentication Failed")

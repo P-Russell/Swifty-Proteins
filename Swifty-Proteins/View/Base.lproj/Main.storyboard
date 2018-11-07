@@ -31,13 +31,25 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note: Atoms do not look like this" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7v-TL-fUI">
+                                <rect key="frame" x="10" y="646" width="355" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="7hh-kd-68O"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="NLi-o5-u7C" firstAttribute="trailing" secondItem="kM5-ez-bdz" secondAttribute="trailing" id="08X-kg-mCE"/>
                             <constraint firstItem="868-4M-ko4" firstAttribute="leading" secondItem="kM5-ez-bdz" secondAttribute="leading" id="2yR-da-mZK"/>
                             <constraint firstItem="NLi-o5-u7C" firstAttribute="top" secondItem="kM5-ez-bdz" secondAttribute="top" id="4GB-zx-ZAF"/>
+                            <constraint firstItem="kM5-ez-bdz" firstAttribute="trailing" secondItem="W7v-TL-fUI" secondAttribute="trailing" constant="10" id="GzN-K9-tq1"/>
+                            <constraint firstItem="W7v-TL-fUI" firstAttribute="leading" secondItem="kM5-ez-bdz" secondAttribute="leading" constant="10" id="Y5K-uZ-lDC"/>
                             <constraint firstItem="NLi-o5-u7C" firstAttribute="leading" secondItem="kM5-ez-bdz" secondAttribute="leading" id="YKF-Xd-DR7"/>
+                            <constraint firstItem="W7v-TL-fUI" firstAttribute="bottom" secondItem="kM5-ez-bdz" secondAttribute="bottom" id="aUD-69-15z"/>
                             <constraint firstItem="kM5-ez-bdz" firstAttribute="trailing" secondItem="868-4M-ko4" secondAttribute="trailing" id="eXr-Ht-K4O"/>
                             <constraint firstItem="868-4M-ko4" firstAttribute="top" secondItem="kM5-ez-bdz" secondAttribute="top" id="ujj-eo-qe1"/>
                             <constraint firstItem="kM5-ez-bdz" firstAttribute="bottom" secondItem="868-4M-ko4" secondAttribute="bottom" id="zSy-41-8oy"/>
