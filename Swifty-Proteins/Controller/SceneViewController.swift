@@ -212,6 +212,7 @@ class SceneViewController: UIViewController {
     
     func shareImage() {
         let bounds = UIScreen.main.bounds
+//        let image : UIImage = gameView.snapshot()
         UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
         self.view.drawHierarchy(in: bounds, afterScreenUpdates: false)
         let img = UIGraphicsGetImageFromCurrentImageContext()
@@ -219,5 +220,4 @@ class SceneViewController: UIViewController {
         let activityViewController = UIActivityViewController(activityItems: [img!], applicationActivities: nil)
         self.present(activityViewController, animated: true, completion: nil)
     }
-    
 }

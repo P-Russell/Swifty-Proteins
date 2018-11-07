@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera is not yet supported by this application</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>FACE ID is not yet a feature of this application</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>This application would like permission to save images to your photo gallery</string>
 	<key>NSPhotoLibraryUsageDescription</key>
