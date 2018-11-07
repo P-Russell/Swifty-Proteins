@@ -10,6 +10,8 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    let api : ProteinDataBankAPI = ProteinDataBankAPI()
+    
     @IBAction func loginButton(_ sender: UIButton) {
         moveToTable()
     }
