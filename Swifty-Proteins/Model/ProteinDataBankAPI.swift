@@ -40,7 +40,7 @@ class ProteinDataBankAPI {
         return Connect(connects: connections)
     }
     
-    private func process(ligandData : String) -> Ligand {
+    func process(ligandData : String) -> Ligand {
         let localLigand : Ligand = Ligand()
         let lines = ligandData.split(separator: "\n")
         for line in lines {
@@ -59,27 +59,26 @@ class ProteinDataBankAPI {
         return localLigand
     }
     
-    var success : Bool = false
+    func processAndSave(ligandData : String){
+        let localLigand : Ligand = Ligand()
+        let lines = ligandData.split(separator: "\n")
+        for line in lines {
+            var token = line.split(separator: " ")
+            switch token[0] {
+            case "ATOM":
+                if token.count == 12 { localLigand.atoms.append(newAtom(line: token)) }
+                break
+            case "CONECT":
+                if token.count > 0 { localLigand.connections.append(newConnect(line: token))}
+                break
+            default:
+                continue
+            }
+        }
+        self.ligand = localLigand
+    }
     
     func fetch(ligand : String) -> Bool {
-        
-        
-//        NSURLRequest * urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://google.com"]];
-//        NSURLResponse * response = nil;
-//        NSError * error = nil;
-//        NSData * data = [NSURLConnection sendSynchronousRequest:urlRequest
-//            returningResponse:&response
-//            error:&error];
-//
-//        if (error == nil)
-//        {
-//            // Parse data here
-//        }
-//
-        
-        
-        
-//        https://stackoverflow.com/questions/3027056/timeout-stringwithcontentsofurl
         if let url = URL(string: "https://files.rcsb.org/ligands/view/\(ligand)_ideal.pdb") {
             do {
                 let contents = try String(contentsOf: url)

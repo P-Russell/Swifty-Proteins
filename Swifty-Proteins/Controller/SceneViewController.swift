@@ -9,6 +9,7 @@
 import UIKit
 import SceneKit
 import SVProgressHUD
+import Alamofire
 
 
 class SceneViewController: UIViewController {
@@ -46,27 +47,47 @@ class SceneViewController: UIViewController {
         initView()
         initScene()
         initCamera()
+        getData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if let ligand = displayLigand {
-            DispatchQueue.global(qos: .userInitiated).async {
-                if self.proteinAPI.fetch(ligand: ligand) {
-                    DispatchQueue.main.async {
-                        self.renderLigand()
-                        SVProgressHUD.dismiss()
-                    }
-                }
-                else {
-                    print("API Call Failed")
-                    SVProgressHUD.showError(withStatus: "API Call Failed")
-                }
-            }
-        }
+//        if let ligand = displayLigand {
+//            DispatchQueue.global(qos: .userInitiated).async {
+//                if self.proteinAPI.fetch(ligand: ligand) {
+//                    DispatchQueue.main.async {
+//                        self.renderLigand()
+//                        SVProgressHUD.dismiss()
+//                    }
+//                }
+//                else {
+//                    print("API Call Failed")
+//                    SVProgressHUD.showError(withStatus: "API Call Failed")
+//                }
+//            }
+//        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    private func getData() {
+        if let ligand = displayLigand {
+            if let url = URL(string : "https://files.rcsb.org/ligands/view/\(ligand)_ideal.pdb") {
+                Alamofire.request(url).validate().responseString { respose in
+                    switch respose.result{
+                    case .success:
+                        self.proteinAPI.processAndSave(ligandData: respose.result.value!)
+                        SVProgressHUD.dismiss()
+                        self.renderLigand()
+                        break
+                    case .failure:
+                        SVProgressHUD.dismiss()
+                        SVProgressHUD.showError(withStatus: "API Call Failed")
+                    }
+                }
+            }
+        }
     }
     
     private func renderLigand() {
