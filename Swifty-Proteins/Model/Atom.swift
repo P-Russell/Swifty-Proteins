@@ -10,18 +10,24 @@ import Foundation
 
 class Atom {
     let index : Int
-    let name : String
     let symbol : String
     let x : Float
     let y : Float
     let z : Float
     
-    init(index : Int, name: String, symbol : String, x : Float, y : Float, z : Float) {
+    init(index : Int, symbol : String, x : Float, y : Float, z : Float) {
         self.index = index
-        self.name = name
         self.symbol = symbol
         self.x = x
         self.y = y
         self.z = z
+    }
+    
+    init() {
+        self.index = 0
+        self.symbol = "undefined"
+        self.x = 0.0
+        self.y = 0.0
+        self.z = 0.0
     }
 }
