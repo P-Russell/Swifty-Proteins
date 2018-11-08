@@ -41,7 +41,7 @@ class ProteinTableViewController: UIViewController, UITableViewDelegate, UITable
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if let ligandList = LigandList.ligands {
-            searchList = ligandList.filter({$0.prefix(searchText.count) == searchText})
+            searchList = ligandList.filter({$0.prefix(searchText.count) == searchText.uppercased()})
             searching = true
             tableView.reloadData()
         }
